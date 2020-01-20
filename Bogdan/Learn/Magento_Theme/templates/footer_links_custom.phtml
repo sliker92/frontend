@@ -96,36 +96,14 @@
 <script>
     require([
         'jquery',
-        'accordion'], function ($, mediaCheck) {
-        // $.widget('mage.menu', $.ui.menu, {
-        //     _init: function () {
-        //         this._super();
-        //
-        //         if (this.options.expanded === true) {
-        //             this.isExpanded();
-        //         }
-        //
-        //         if (this.options.responsive === true) {
-        //             mediaCheck({
-        //                 media: this.options.mediaBreakpoint,
-        //                 entry: $.proxy(function () {
-        //                     this._toggleMobileMode();
-        //                 }, this),
-        //                 exit: $.proxy(function () {
-        //                     this._toggleDesktopMode();
-        //                 }, this)
-        //             });
-        //         }
-        //
-        //         this._assignControls()._listen();
-        //         this._setActiveMenu();
-        //     },
-        // });
+        'accordion',
+        'matchMedia'], function ($) {
         $("#accordion").accordion(
             {active: false},
             {collapsible: true},
             {multipleCollapsible: true},
-            {openedState: "active"},
+            {openedState: false},
+            disabled
         );
         $(".accordion_links_header").click(function (element) {
             var id = checkID(element.target.textContent);
@@ -135,6 +113,5 @@
         function checkID(element) {
             return element[element.length - 1];
         }
-    });
-
+    })
 </script>
