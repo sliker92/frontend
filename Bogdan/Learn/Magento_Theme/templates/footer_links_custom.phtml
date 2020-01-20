@@ -1,0 +1,140 @@
+<div class="footer_links_wrapper accordion" id="accordion">
+    <div data-role="collapsible" class="footer_links_block">
+        <div class="footer_links_header_container">
+            <h2 data-role="trigger" class="accordion_links_header">Links list 1</h2>
+            <i class="fas fa-sort-down links_arrow links_arrow1"></i>
+        </div>
+        <ul data-role="content" class="footer_links_list">
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 1</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 2</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 3</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 4</a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="collapsible" class="footer_links_block">
+        <div class="footer_links_header_container">
+            <h2 data-role="trigger" class="accordion_links_header">Links list 2</h2>
+            <i class="fas fa-sort-down links_arrow links_arrow2"></i>
+        </div>
+        <ul data-role="content" class="footer_links_list">
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 1</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 2</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 3</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 4</a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="collapsible" class="footer_links_block">
+        <div class="footer_links_header_container">
+            <h2 data-role="trigger" class="accordion_links_header">Links list 3</h2>
+            <i class="fas fa-sort-down links_arrow links_arrow3"></i>
+        </div>
+        <ul data-role="content" class="footer_links_list">
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 1</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 2</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 3</a>
+            </li>
+            <li class="footer_links_items nav item">
+                <a href="#" class="footer_link link">Link 4</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="footer_social_wrapper">
+    <div class="footer_social_links">
+        <h2>Follow us on</h2>
+        <ul class="footer_social_list">
+            <li class="footer_social_item">
+                <a href="" class="footer_social_link">
+                    <i class="fab fa-twitter-square fa-3x"></i>
+                </a>
+            </li>
+            <li class="footer_social_item">
+                <a href="" class="footer_social_link">
+                    <i class="fab fa-facebook-square fa-3x"></i>
+                </a>
+            </li>
+            <li class="footer_social_item">
+                <a href="" class="footer_social_link">
+                    <i class="fab fa-pinterest-square fa-3x"></i>
+                </a>
+            </li>
+            <li class="footer_social_item">
+                <a href="" class="footer_social_link">
+                    <i class="fab fa-youtube-square fa-3x"></i>
+                </a>
+            </li>
+            <li class="footer_social_item">
+                <a href="" class="footer_social_link">
+                    <i class="fab fa-instagram fa-3x"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'accordion'], function ($, mediaCheck) {
+        // $.widget('mage.menu', $.ui.menu, {
+        //     _init: function () {
+        //         this._super();
+        //
+        //         if (this.options.expanded === true) {
+        //             this.isExpanded();
+        //         }
+        //
+        //         if (this.options.responsive === true) {
+        //             mediaCheck({
+        //                 media: this.options.mediaBreakpoint,
+        //                 entry: $.proxy(function () {
+        //                     this._toggleMobileMode();
+        //                 }, this),
+        //                 exit: $.proxy(function () {
+        //                     this._toggleDesktopMode();
+        //                 }, this)
+        //             });
+        //         }
+        //
+        //         this._assignControls()._listen();
+        //         this._setActiveMenu();
+        //     },
+        // });
+        $("#accordion").accordion(
+            {active: false},
+            {collapsible: true},
+            {multipleCollapsible: true},
+            {openedState: "active"},
+        );
+        $(".accordion_links_header").click(function (element) {
+            var id = checkID(element.target.textContent);
+            $(".links_arrow" + id).toggleClass('rotated');
+        });
+
+        function checkID(element) {
+            return element[element.length - 1];
+        }
+    });
+
+</script>
