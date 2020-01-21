@@ -1,7 +1,8 @@
 require([
     'jquery',
     'accordion',
-    'matchMedia'], function ($) {
+    'matchMedia',
+], function ($) {
     $("#accordion").accordion(
         {active: false},
         {collapsible: true},
@@ -17,9 +18,24 @@ require([
         media: '(min-width: 768px)',
         entry: function () {
             $("#accordion").accordion('destroy');
+            $('.links_arrow').each(function (index, element) {
+                $(element).css("display", "none");
+            });
         },
         exit: function () {
-            $("#accordion").accordion('activate');
+            $("#accordion").accordion(
+                {active: false},
+                {collapsible: true},
+                {multipleCollapsible: true},
+                {openedState: false},
+            );
+            $(".accordion_links_header").click(function (element) {
+                var id = checkID(element.target.textContent);
+                $(".links_arrow" + id).toggleClass('rotated');
+            });
+            $('.links_arrow').each(function (index, element) {
+                $(element).css("display", "block");
+            });
         },
     });
 
