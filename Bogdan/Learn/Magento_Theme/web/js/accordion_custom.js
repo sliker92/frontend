@@ -1,45 +1,37 @@
-require([
+define([
     'jquery',
     'accordion',
-    'matchMedia',
-], function ($) {
-    $("#accordion").accordion(
-        {active: false},
-        {collapsible: true},
-        {multipleCollapsible: true},
-        {openedState: false},
-    );
-    $(".accordion_links_header").click(function (element) {
-        var id = checkID(element.target.textContent);
-        $(".links_arrow" + id).toggleClass('rotated');
-    });
+    'matchMedia'
+], function ($, _) {
+    'use strict';
 
-    mediaCheck({
-        media: '(min-width: 768px)',
-        entry: function () {
-            $("#accordion").accordion('destroy');
-            $('.links_arrow').each(function (index, element) {
-                $(element).css("display", "none");
-            });
-        },
-        exit: function () {
-            $("#accordion").accordion(
+    $.widget('mage.accordion_custom', {
+        _create: function (element) {
+            this._case = $(this.element);
+
+            $(this._case).accordion(
                 {active: false},
                 {collapsible: true},
                 {multipleCollapsible: true},
                 {openedState: false},
             );
-            $(".accordion_links_header").click(function (element) {
-                var id = checkID(element.target.textContent);
-                $(".links_arrow" + id).toggleClass('rotated');
+
+            mediaCheck({
+                media: '(min-width: 768px)',
+                entry: $.proxy(function () {
+                    $(this._case).accordion('destroy');
+                }, this),
+                exit: $.proxy(function () {
+                    $(this._case).accordion(
+                        {active: false},
+                        {collapsible: true},
+                        {multipleCollapsible: true},
+                        {openedState: false},
+                    );
+                }, this)
             });
-            $('.links_arrow').each(function (index, element) {
-                $(element).css("display", "block");
-            });
-        },
+        }
     });
 
-    function checkID(element) {
-        return element[element.length - 1];
-    }
+    return $.mage.accordion_custom;
 });
