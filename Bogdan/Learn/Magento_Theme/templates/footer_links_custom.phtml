@@ -98,16 +98,34 @@
         'jquery',
         'accordion',
         'matchMedia'], function ($) {
-        $("#accordion").accordion(
-            {active: false},
-            {collapsible: true},
-            {multipleCollapsible: true},
-            {openedState: false},
-            disabled
-        );
-        $(".accordion_links_header").click(function (element) {
-            var id = checkID(element.target.textContent);
-            $(".links_arrow" + id).toggleClass('rotated');
+        var mediaWidth = '';
+
+        $(window).on('resize', function () {
+            if (mediaWidth === 'mobile') {
+                $("#accordion").accordion(
+                    {active: false},
+                    {collapsible: true},
+                    {multipleCollapsible: true},
+                    {openedState: false},
+                );
+                $(".accordion_links_header").click(function (element) {
+                    var id = checkID(element.target.textContent);
+                    $(".links_arrow" + id).toggleClass('rotated');
+                });
+            } else {
+                $("#accordion").accordion('destroy');
+            }
+        });
+
+        mediaCheck({
+            media: '(min-width: 768px)',
+            entry: function () {
+                mediaWidth = 'desktop';
+            },
+            exit: function () {
+                mediaWidth = 'mobile';
+            },
+
         });
 
         function checkID(element) {
