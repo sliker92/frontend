@@ -1,4 +1,4 @@
-<div class="footer_links_wrapper accordion" id="accordion">
+<div class="footer_links_wrapper accordion" id="accordion" data-mage-init='{"Magento_Theme/js/accordion_custom": {}}'>
     <div data-role="collapsible" class="footer_links_block">
         <div class="footer_links_header_container">
             <h2 data-role="trigger" class="accordion_links_header">Links list 1</h2>
@@ -92,44 +92,3 @@
         </ul>
     </div>
 </div>
-
-<script>
-    require([
-        'jquery',
-        'accordion',
-        'matchMedia'], function ($) {
-        var mediaWidth = '';
-
-        $(window).on('resize', function () {
-            if (mediaWidth === 'mobile') {
-                $("#accordion").accordion(
-                    {active: false},
-                    {collapsible: true},
-                    {multipleCollapsible: true},
-                    {openedState: false},
-                );
-                $(".accordion_links_header").click(function (element) {
-                    var id = checkID(element.target.textContent);
-                    $(".links_arrow" + id).toggleClass('rotated');
-                });
-            } else {
-                $("#accordion").accordion('destroy');
-            }
-        });
-
-        mediaCheck({
-            media: '(min-width: 768px)',
-            entry: function () {
-                mediaWidth = 'desktop';
-            },
-            exit: function () {
-                mediaWidth = 'mobile';
-            },
-
-        });
-
-        function checkID(element) {
-            return element[element.length - 1];
-        }
-    })
-</script>
