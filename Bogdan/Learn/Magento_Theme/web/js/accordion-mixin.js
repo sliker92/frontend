@@ -5,4 +5,5 @@ define(['jquery', 'jquery/ui'], function ($) {
         $.widget('mage.accordion', accordion, {});
         console.log('mixin');
     }
+
 });

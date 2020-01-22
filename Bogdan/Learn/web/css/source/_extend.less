@@ -75,26 +75,39 @@
       justify-content: space-around;
 
       .footer_links_block {
-        .footer_links_header_container {
-          display: flex;
+        .accordion_links_header {
+          cursor: pointer;
+          margin: 0;
+          padding: 2.5rem;
 
-          .accordion_links_header {
-            cursor: pointer;
-
-            &:hover {
-              color: @color-gray-middle4;
-            }
-          }
-
-          .links_arrow {
-            align-self: center;
-            padding-left: 5px;
-          }
-
-          .rotated {
-            transform: rotate(180deg) translate(-5px, -5px);
+          &:hover {
+            color: @color-gray-middle4;
           }
         }
+
+        .accordion_closed {
+          &::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f0dd";
+            display: inline-block;
+            font-weight: 600;
+            transform: translate(5px, -3px);
+          }
+        }
+
+        .accordion_opened {
+          &::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f0dd";
+            display: inline-block;
+            font-weight: 600;
+            transform: rotate(180deg) translate(-4px, -6px);
+          }
+        }
+
+        //.rotated {
+        //  transform: rotate(180deg) translate(-5px, -5px);
+        //}
 
         .footer_links_list {
           display: flex;
@@ -153,6 +166,39 @@
       display: inline-block;
       float: left;
       margin-top: 3rem;
+    }
+
+    .footer_links_wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      .footer_links_block {
+        .accordion_links_header {
+          cursor: default;
+
+          &:hover {
+            color: @text__color;
+          }
+        }
+
+        .accordion_closed {
+          &::after {
+            content: "";
+          }
+        }
+
+        .accordion_opened {
+          &::after {
+            content: "";
+          }
+        }
+
+        .footer_links_list {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
 
     .footer_social_wrapper {
