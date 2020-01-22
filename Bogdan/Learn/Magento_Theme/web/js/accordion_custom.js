@@ -9,6 +9,8 @@ define([
         _create: function (config, element) {
             this._case = $(this.element);
             var breakpoint = this.options.breakpoint;
+            // need for change htmlClass when opening or closing list
+            var headerClass = $('.' + this.options.headerClass);
 
             $(this._case).accordion(
                 {active: false},
@@ -32,16 +34,14 @@ define([
                     );
                 }, this)
             });
-            if ($('.accordion_links_header')) {
-                $('.accordion_links_header').click(function () {
+            if (headerClass) {
+                headerClass.click(function () {
                     var $this = $(this);
 
                     if ($this.hasClass("accordion_closed")) {
-                        console.log('open');
                         $this.removeClass("accordion_closed");
                         $this.addClass("accordion_opened");
                     } else if ($this.hasClass("accordion_opened")) {
-                        console.log('closed');
                         $this.removeClass("accordion_opened");
                         $this.addClass("accordion_closed");
                     }
