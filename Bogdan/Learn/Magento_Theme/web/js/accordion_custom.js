@@ -1,3 +1,6 @@
+// If you want use custom animation on opening and closing widget(data-role="trigger")
+// add css code in your styles file on accordion_closed::after and accordion_opened::after classes.
+
 define([
     'jquery',
     'accordion',
