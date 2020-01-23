@@ -3,7 +3,7 @@ define(['jquery', 'jquery/ui'], function ($) {
 
     return function (accordion) {
         $.widget('mage.accordion', accordion, {});
-        console.log('mixin');
+        console.log('mixin added');
     }
 
 });

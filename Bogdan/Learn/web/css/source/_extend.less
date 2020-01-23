@@ -12,6 +12,7 @@
     padding: 10px 0;
     background-color: @color-gray-darken1;
     text-align: center;
+    margin-bottom: 1rem;
 
     .text-blue {
       padding-left: 2px;
@@ -138,11 +139,12 @@
     max-width: 100%;
   }
 
-  .block.newsletter, .block {
-    margin: 0;
+  .free_shipping_wrapper {
+    margin-bottom: 1rem;
   }
 
-  .page-bottom {
+  .block.newsletter, .block {
+    margin: auto;
     width: 100%;
   }
 
@@ -150,9 +152,21 @@
     margin: 0;
   }
 
+  .page-bottom {
+    width: 100%;
+
+    .content {
+      display: inline-flex;
+      width: 100%;
+
+      .newsletter {
+        width: 100%;
+      }
+    }
+  }
+
   .page-bottom > .content {
     padding: 25px 0;
-    display: inline-flex;
     width: 40%;
   }
 
