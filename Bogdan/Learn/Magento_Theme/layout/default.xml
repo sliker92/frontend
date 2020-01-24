@@ -5,7 +5,7 @@
             <block name="free.shipping" after="-" template="Magento_Theme::free_shipping.phtml" />
         </referenceContainer>
         <referenceContainer name="content">
-            <block name="knockout.example" before="-" template="Magento_Theme::knockout_example.phtml" />
+            <block name="main_content" before="-" template="Magento_Theme::main_content.phtml" />
         </referenceContainer>
         <referenceContainer name="page.bottom.container">
             <block name="form_subscribe_content" template="Magento_Theme::form_subscribe_content.phtml" before="-" />
