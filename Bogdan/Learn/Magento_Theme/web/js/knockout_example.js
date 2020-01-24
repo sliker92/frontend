@@ -3,10 +3,10 @@ define(['ko'], function (ko) {
 
     return function () {
 
-        let time = ko.observable('...loading');
-        let currTime = new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds();
+        var time = ko.observable('...loading');
+        var currTime = new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds();
 
-        let viewModel = {
+        var viewModel = {
             info: time
         };
 
