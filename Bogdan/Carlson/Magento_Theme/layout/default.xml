@@ -11,10 +11,10 @@
                     <argument name="logo_img_height" xsi:type="number">50</argument>
                 </arguments>
             </referenceBlock>
-            <referenceContainer name="header-wrapper">
-                <block name="header.nav" template="Magento_Theme::header_nav.phtml" after="logo"/>
-                <block name="header.cart_phone" template="Magento_Theme::phone_cart.phtml" after="top.search"/>
-            </referenceContainer>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+            <block name="header.nav" template="Magento_Theme::header_nav.phtml" after="logo"/>
+            <block name="header.cart_phone" template="Magento_Theme::phone_cart.phtml" after="top.search"/>
         </referenceContainer>
 
         <referenceContainer name="header.panel" remove="true"/>
