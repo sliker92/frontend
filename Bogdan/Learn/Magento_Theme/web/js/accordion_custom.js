@@ -3,53 +3,69 @@
 
 define([
     'jquery',
+    'jquery/ui',
     'accordion',
     'matchMedia'
 ], function ($, _) {
     'use strict';
 
     $.widget('mage.accordion_custom', {
-        _create: function (config, element) {
-            this._case = $(this.element);
-            var breakpoint = this.options.breakpoint;
-            // need for change htmlClass when opening or closing list
-            var headerClass = $('.' + this.options.headerClass);
+        options: {
+            openedClass: 'accordion_opened', // Class used to be toggled on clicked element
+            closedClass: 'accordion_closed' // Class used to be toggled on clicked element
+        },
 
-            $(this._case).accordion(
+        /**
+         * Toggle creation
+         * @private
+         */
+        _create: function (config, element) {
+            this.element = $(this.element);
+            this._bindCore();
+
+            mediaCheck({
+                media: '(min-width: ' + this.options.breakpoint + 'px)',
+                entry: $.proxy(function () {
+                    $(this.element).accordion("activate");
+                    $(this.element).accordion('destroy');
+                }, this),
+                exit: $.proxy(this._showAccordion, this)
+            });
+
+        },
+
+        /**
+         *  Core bound events
+         * @protected
+         */
+        _bindCore: function () {
+            var headerClass = $('.' + this.options.headerClass);
+            var options = this.options;
+            var $this = $(this);
+            if (headerClass) {
+                headerClass.on('click', $.proxy(function () {
+                    if ($this.hasClass(options.closedClass)) {
+                        $this.removeClass(options.closedClass);
+                        $this.addClass(options.openClass);
+                    } else if ($this.hasClass(options.openClass)) {
+                        $this.removeClass(options.openClass);
+                        $this.addClass(options.closedClass);
+                    }
+                }, this));
+            }
+        },
+
+        /**
+         * Shows widget
+         * @private
+         */
+        _showAccordion: function () {
+            $(this.element).accordion(
                 {active: false},
                 {collapsible: true},
                 {multipleCollapsible: true},
                 {openedState: false},
             );
-
-            mediaCheck({
-                media: '(min-width: ' + breakpoint + 'px)',
-                entry: $.proxy(function () {
-                    $(this._case).accordion("activate");
-                    $(this._case).accordion('destroy');
-                }, this),
-                exit: $.proxy(function () {
-                    $(this._case).accordion(
-                        {active: false},
-                        {collapsible: true},
-                        {multipleCollapsible: true},
-                        {openedState: false},
-                    );
-                }, this)
-            });
-            if (headerClass) {
-                headerClass.click(function () {
-                    var $this = $(this);
-
-                    if ($this.hasClass("accordion_closed")) {
-                        $this.removeClass("accordion_closed");
-                        $this.addClass("accordion_opened");
-                    } else if ($this.hasClass("accordion_opened")) {
-                        $this.removeClass("accordion_opened");
-                        $this.addClass("accordion_closed");
-                    }
-                })
-            }
         }
     });
 
