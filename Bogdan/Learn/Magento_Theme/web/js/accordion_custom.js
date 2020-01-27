@@ -35,7 +35,7 @@ define([
         },
 
         /**
-         *  Core bound events
+         * Core bound events
          * @protected
          */
         _bindCore: function () {
