@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="header.container">
-            <block name="header.nav" template="Magento_Theme::header_nav.phtml" before="-"/>
+            <block name="header.nav" template="Magento_Theme::header_navigation_desktop.phtml" before="-"/>
             <referenceBlock name="logo">
                 <arguments>
                     <argument name="logo_file" xsi:type="string">images/logo.png</argument>
@@ -13,12 +13,14 @@
             </referenceBlock>
         </referenceContainer>
         <referenceContainer name="header-wrapper">
-            <block name="header.nav" template="Magento_Theme::header_nav.phtml" after="logo"/>
             <block name="header.cart_phone" template="Magento_Theme::header_phone.phtml" after="top.search"/>
+            <block name="header_banner" template="Magento_Theme::header_banner.phtml" after="-" />
+        </referenceContainer>
+        <referenceContainer name="page.bottom">
+            <block name="main_sailing" template="Magento_Theme::main_sailing.phtml" after="-" />
         </referenceContainer>
 
         <referenceContainer name="header.panel" remove="true"/>
-        <referenceContainer name="showcart.wrapper" remove="true"/>
         <referenceContainer name="page.top" remove="true"/>
         <referenceBlock name="form.subscribe" remove="true"/>
         <referenceBlock name="report.bugs" remove="true"/>

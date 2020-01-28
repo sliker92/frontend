@@ -1,4 +1,14 @@
 & when (@media-common = true) {
+  h1 {
+    margin: 0;
+  }
+
+  .header.content, .page-bottom {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
   .header_nav_list {
     display: none;
   }
@@ -12,7 +22,7 @@
   }
 
   .nav-toggle {
-    top: 27px;
+    top: .8rem;
   }
 
   .nav-toggle:before {
@@ -23,12 +33,72 @@
 
   .minicart-wrapper {
     top: 14px;
+    padding-right: 1rem;
   }
 
+  .header_banner {
+    padding: .5rem 0;
+    background-color: @color-gray-middle4;
+    color: @color-white;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: ceil(@font-size__base * 0.9);
+    clear: both;
 
+    text-transform: uppercase;
+
+    .header_banner_text_link {
+      font-weight: 400;
+      text-transform: none;
+      color: @color-white;
+    }
+  }
+
+  // Main
+
+  .main_sailing_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+    background: @color-gray-light1;
+
+    .main_sailing_header {
+      font-weight: 600;
+      color: @color-black;
+    }
+
+    .main_sailing_info {
+      color: @color-gray-middle4;
+
+      .main_sailing_phone {
+        color: @color-blue3;
+      }
+    }
+  }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  h1 {
+    margin: 0;
+  }
+
+  .navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper > .widget, .page-wrapper > .page-bottom, .block.category.event, .top-container, .page-main {
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+
+  .header.content, .page-bottom {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+
   .header_phone_wrapper {
     display: inline-block;
 
@@ -66,19 +136,33 @@
   .block-search .action.search:before {
     color: @color-orange-red4;
   }
+
+  // Main
+
+  .main_sailing_wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+  h1 {
+    margin: 0;
+  }
+
+  .logo > img {
+    padding-left: 3.4rem;
+  }
+
   input[type="text"] {
     height: 36px;
   }
 
-  .header.content {
+  .header.content, .page-bottom {
+    max-width: 100%;
     padding: 0;
-  }
-
-  .logo > img {
-    padding-top: 3rem;
+    margin: 0;
   }
 
   .header_nav_list {
