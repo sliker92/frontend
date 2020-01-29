@@ -19,10 +19,17 @@
         <referenceContainer name="page.bottom">
             <block name="main_sailing" template="Magento_Theme::main_sailing.phtml" after="-" />
         </referenceContainer>
+        <referenceContainer name="footer">
+            <block name="footer_info" template="Magento_Theme::footer_info.phtml" before="-" />
+            <block name="footer_navigation" template="Magento_Theme::footer_navigation.phtml" after="-" />
+            <block name="footer_copyright" template="Magento_Theme::footer_copyright.phtml" after="-" />
+        </referenceContainer>
 
         <referenceContainer name="header.panel" remove="true"/>
         <referenceContainer name="page.top" remove="true"/>
         <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
         <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
     </body>
 </page>
